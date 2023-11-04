@@ -5,7 +5,7 @@ import logo from '../assets/Icons/logo.png'
 
 const Footer = () => {
     return (
-        <footer className="footer py-10 max-w-[1100px] mx-auto px-8 md:px-0">
+        <footer className="footer py-10 container mx-auto px-8 md:px-0">
             <aside>
                 <img src={logo} alt="" />
                 <p>JOBTEX . <br />Providing reliable tech since 2017</p>
