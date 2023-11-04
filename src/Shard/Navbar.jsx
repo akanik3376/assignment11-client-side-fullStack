@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/Icons/logo.png';
+import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
-
+    const { user, logoutUser } = useAuth()
     // Static  navbar when scrolling website !
     const [isSticky, setIsSticky] = useState(false);
 
@@ -41,7 +42,9 @@ const Navbar = () => {
         <li><NavLink to="/register">Register</NavLink></li>
     </>
 
-
+    const handelLogOut = () => {
+        logoutUser()
+    }
 
     return (
         <div className={`navbar bg-base-100 container mx-auto ${navbarClasses}`}>
@@ -68,7 +71,43 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <div className="ml-5">
+                    {
+                        user?.email ? <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar online">
+                                <div className="w-12 rounded-full">
+                                    <img src={user?.photoURL} alt='' />
+
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <button className="btn btn-ghost">{user.displayName}</button>
+
+                                </li>
+                                <li>
+                                    <button className="btn  btn-ghost"
+                                        onClick={handelLogOut}
+                                    >Sign Out</button>
+
+                                </li>
+                            </ul>
+                        </div>
+                            :
+
+                            <div className="flex justify-between items-center" >
+                                <Link to='/login'>
+                                    <button className="btn btn-sm  btn-ghost">Sign In</button>
+                                </Link>
+                                <div className="w-12 rounded-full">
+                                    <img src='https://i.ibb.co/Y8fBVjy/boy2.jpg' alt='' />
+
+                                </div>
+
+
+                            </div>
+                    }
+                </div>
             </div>
         </div>
     );

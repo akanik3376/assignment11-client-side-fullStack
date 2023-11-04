@@ -1,24 +1,29 @@
-// import { useState } from "react";
-// import useAuth from "../Hooks/useAuth";
+import { useState } from "react";
+import useAuth from "../Hooks/useAuth";
+import swal from "sweetalert";
+
 
 const RegisterPage = () => {
-    // const [email, setEmail] = useState()
-    // const [password, setPassword] = useState()
-    // const { createUser, user } = useAuth()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const { createUser, user } = useAuth()
 
 
     const HandelRegister = async (e) => {
         e.preventDefault()
         // get form input value with state and onBlur={(e) => setEmail(e.target.value)} fusion
-
+        console.log(email, password)
         // create user hare and send email,and password as a prop
 
-        // try {
-        //     await createUser(email, password)
-        //     console.log('created', user)
-        // } catch (err) {
-        //     console.log(err)
-        // }
+        try {
+            await createUser(email, password)
+            if (user?.accessToken) {
+                swal("user create success fully")
+            }
+            // console.log('created', user)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -32,8 +37,8 @@ const RegisterPage = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            {/* onBlur={(e) => setEmail(e.target.value)} */}
-                            <input
+                            {/*  */}
+                            <input onBlur={(e) => setEmail(e.target.value)}
                                 type="email" name="email"
                                 placeholder="email" className="input input-bordered" required />
                         </div>
@@ -41,8 +46,8 @@ const RegisterPage = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            {/* onBlur={(e) => setPassword(e.target.value)} */}
-                            <input
+                            {/* */}
+                            <input onBlur={(e) => setPassword(e.target.value)}
                                 type="password" name="password"
                                 placeholder="password" className="input input-bordered" required />
                             <label className="label">

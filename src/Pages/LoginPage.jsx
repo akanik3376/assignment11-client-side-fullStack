@@ -1,9 +1,12 @@
+import { useState } from "react";
+import useAuth from "../Hooks/useAuth";
+import swal from "sweetalert";
 
 const LoginPage = () => {
 
-    // const [email, setEmail] = useState()
-    // const [password, setPassword] = useState()
-    // const { createUser, user } = useAuth()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const { createUser, user } = useAuth()
 
 
     const HandelRegister = async (e) => {
@@ -12,12 +15,16 @@ const LoginPage = () => {
 
         // create user hare and send email,and password as a prop
 
-        // try {
-        //     await createUser(email, password)
-        //     console.log('created', user)
-        // } catch (err) {
-        //     console.log(err)
-        // }
+        try {
+            await createUser(email, password)
+            if (user?.accessToken) {
+                swal("user login success fully")
+            }
+
+
+        } catch (err) {
+            swal("error")
+        }
     }
 
 
@@ -32,8 +39,8 @@ const LoginPage = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            {/* onBlur={(e) => setEmail(e.target.value)} */}
-                            <input
+                            {/*  */}
+                            <input onBlur={(e) => setEmail(e.target.value)}
                                 type="email" name="email"
                                 placeholder="email" className="input input-bordered" required />
                         </div>
@@ -41,8 +48,8 @@ const LoginPage = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            {/* onBlur={(e) => setPassword(e.target.value)} */}
-                            <input
+                            {/* */}
+                            <input onBlur={(e) => setPassword(e.target.value)}
                                 type="password" name="password"
                                 placeholder="password" className="input input-bordered" required />
                             <label className="label">
@@ -50,7 +57,8 @@ const LoginPage = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-primary">Register</button>
+                            <button type="submit"
+                                className="btn btn-primary">Register</button>
                         </div>
                     </form>
                 </div>
