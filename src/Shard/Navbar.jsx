@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/Icons/logo.png';
 import useAuth from "../Hooks/useAuth";
+import userImg from '../assets/icons2/th.jpg'
 
 const Navbar = () => {
     const { user, logoutUser } = useAuth()
@@ -38,8 +39,8 @@ const Navbar = () => {
         <li><NavLink to="/contact">My posted jobs</NavLink></li>
         <li><NavLink to="/contact">My Bids</NavLink></li>
         <li><NavLink to="/contact">Bid Requests</NavLink></li>
-        <li><NavLink to="/login">Login</NavLink></li>
-        <li><NavLink to="/register">Register</NavLink></li>
+        {/* <li><NavLink to="/login">Login</NavLink></li>
+        <li><NavLink to="/register">Register</NavLink></li> */}
     </>
 
     const handelLogOut = () => {
@@ -73,20 +74,24 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="ml-5">
                     {
-                        user?.email ? <div className="dropdown dropdown-end">
+                        user ? <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar online">
                                 <div className="w-12 rounded-full">
-                                    <img src={user?.photoURL} alt='' />
+                                    {
+                                        user?.photoUrl ? <img src={user?.photoURL} alt='' /> :
+                                            <img src={userImg} alt="" />
+                                    }
 
                                 </div>
                             </label>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+
                                 <li>
-                                    <button className="btn btn-ghost">{user.displayName}</button>
+                                    <p className="font-bold">{user?.email}</p>
 
                                 </li>
                                 <li>
-                                    <button className="btn  btn-ghost"
+                                    <button className="btn mt-2 py-3 px-5 btn-primary font-bold"
                                         onClick={handelLogOut}
                                     >Sign Out</button>
 
@@ -97,18 +102,16 @@ const Navbar = () => {
 
                             <div className="flex justify-between items-center" >
                                 <Link to='/login'>
-                                    <button className="btn btn-sm  btn-ghost">Sign In</button>
+                                    <button className="btn btn-sm  btn-primary font-bold">Sign In</button>
                                 </Link>
-                                <div className="w-12 rounded-full">
-                                    <img src='https://i.ibb.co/Y8fBVjy/boy2.jpg' alt='' />
-
-                                </div>
 
 
                             </div>
                     }
                 </div>
             </div>
+
+
         </div>
     );
 };
