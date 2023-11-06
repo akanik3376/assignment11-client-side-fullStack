@@ -5,17 +5,7 @@ import { Link, } from "react-router-dom";
 
 const Job = ({ job }) => {
 
-    // const jobs = useLoaderData()
     const { job_title, max_price, min_price, deadline, description, _id } = job || {}
-
-
-
-    // const HandelDeities = (id) => {
-
-    //     const Details = jobs.find(job => job._id === id)
-
-    //     console.log(Details)
-    // }
 
     return (
         <div className="border-2 flex-col space-y-3 p-3">

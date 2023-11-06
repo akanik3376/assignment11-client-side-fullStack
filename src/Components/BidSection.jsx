@@ -8,32 +8,24 @@ const BidSection = ({ job }) => {
     const { user } = useAuth()
     const { job_title, deadline } = job || {}
     const status = false
-
+    const email = user?.email
 
     const handelAddJob = (e) => {
         e.preventDefault()
         const price = e.target.price.value
         const bidDeadline = e.target.deadline.value
 
-        const biderEmail = e.target.biderEmail.value
+        // const biderEmail = e.target.biderEmail.value
         const ownerEmail = e.target.ownerEmail.value
 
-
-        // const jobInfo = {
-        //     price,
-        //     deadline,
-
-        //     biderEmail,
-        //     ownerEmail
-        // }
         const bidInfo = {
-            biderEmail, job_title, deadline, status, price,
-            bidDeadline, ownerEmail
-        }
-        // console.log(user.email)
-        // send data to server
+            email, job_title, deadline, status, price,
+            bidDeadline, ownerEmail,
 
-        axios.post(`http://localhost:5000/api/v1/jobs/apply?email=${user.email}`, bidInfo)
+        }
+
+
+        axios.post(`http://localhost:5000/api/v1/jobs/apply/user/request`, bidInfo)
             .then(response => {
                 console.log('Job posted successfully:', response.data);
             })

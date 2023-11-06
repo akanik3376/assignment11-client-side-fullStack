@@ -7,6 +7,7 @@ import Home from '../Pages/Home';
 import LoginPage from '../Pages/LoginPage';
 import AddJob from '../Pages/AddJob';
 import Details from '../Pages/Details';
+import MyBids from '../Pages/MyBids';
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path: '/addJob',
                 element: <AddJob></AddJob>
+            },
+            {
+                path: '/myBids',
+                element: <MyBids></MyBids>,
+                // loader: () => fetch('http://localhost:5000/api/v1/jobs/apply/user/request')
             },
             {
                 path: '/login',

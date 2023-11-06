@@ -6,8 +6,7 @@ import BidSection from "../Components/BidSection";
 const Details = () => {
     const [job, setJob] = useState()
     const jobs = useLoaderData()
-    // const jobs = useLoaderData()
-    // console.log(jobs)
+
     const { id } = useParams()
 
     useEffect(() => {
@@ -15,7 +14,6 @@ const Details = () => {
         setJob(Details)
     }, [id, jobs])
 
-    // const job = useLoaderData()
     // console.log(job)
     const { job_title, max_price, min_price, deadline, description } = job || {}
 
