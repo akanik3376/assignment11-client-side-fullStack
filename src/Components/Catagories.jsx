@@ -1,22 +1,24 @@
-import axios from "axios";
-import { useState } from "react";
+// import axios from "axios";
+// import { useState } from "react";
 import Job from "./job";
+import { useLoaderData } from "react-router-dom";
 
 
 
 const Catagories = () => {
 
-    const [jobs, setJobs] = useState()
+    // const [jobs, setJobs] = useState()
 
-    axios.get('http://localhost:5000/api/v1/jobs')
-        .then(response => {
-            setJobs(response.data);
+    // axios.get('http://localhost:5000/api/v1/jobs')
+    //     .then(response => {
+    //         setJobs(response.data);
 
-        })
-        .catch(error => {
-            console.log(error)
-        });
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     });
 
+    const jobs = useLoaderData()
 
     return (
         <div className="container mx-auto">

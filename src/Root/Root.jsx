@@ -6,6 +6,7 @@ import RegisterPage from '../Pages/RegisterPage';
 import Home from '../Pages/Home';
 import LoginPage from '../Pages/LoginPage';
 import AddJob from '../Pages/AddJob';
+import Details from '../Pages/Details';
 
 const router = createBrowserRouter([
     {
@@ -15,7 +16,14 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/api/v1/jobs')
+            },
+            {
+                path: '/details/:id',
+                element: <Details></Details>,
+                loader: () => fetch('http://localhost:5000/api/v1/jobs')
+                // loader: ({ params }) => fetch(`http://localhost:5000/api/v1/jobs/${params.id}`)
             },
             {
                 path: '/addJob',
