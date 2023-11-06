@@ -7,17 +7,6 @@ import { useLoaderData } from "react-router-dom";
 
 const Catagories = () => {
 
-    // const [jobs, setJobs] = useState()
-
-    // axios.get('http://localhost:5000/api/v1/jobs')
-    //     .then(response => {
-    //         setJobs(response.data);
-
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     });
-
     const jobs = useLoaderData()
 
     return (
