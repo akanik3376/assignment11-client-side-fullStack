@@ -7,7 +7,7 @@ import halp from '../assets/icons2/icon7.svg'
 
 const HowWork = () => {
     return (
-        <div className='bg-[#123841] my-14'>
+        <div className='bg-[#123841] my-14 '>
             <h1 className="text-5xl pt-14 text-[#64666C] mb-3 font-bold text-center">How It Work
             </h1>
             <p className="text-center text-[#64666C]">Streamline your hiring process with strategic channels to reach qualified candidates

@@ -3,7 +3,7 @@ import jobImg from '../assets/img/h91.png'
 
 const GetJob = () => {
     return (
-        <div className='container mx-auto my-12'>
+        <div className='container mx-auto my-12 px-5 md:px-0'>
             <h1 className="text-4xl font-bold text-center mb-6">Get the job that`s right for you</h1>
             <div className='flex flex-col md:flex-row justify-center items-center'>
                 <div className='flex-col space-y-3'>

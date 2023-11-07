@@ -1,19 +1,20 @@
 /* eslint-disable react/prop-types */
 
 const Table = ({ job }) => {
-    const { email } = job || {}
-
+    const { email, job_title, deadline } = job || {}
+    // console.log(job)
     return (
-        <div className="container mx-auto my-12 overflow-x-auto">
+        <div className="container mx-auto my-12 overflow-x-auto bg-teal-100">
             <table className="table">
                 {/* head */}
                 <thead>
                     <tr>
 
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                        <th></th>
+                        <th>Job title</th>
+                        <th>gmail</th>
+                        <th>date line</th>
+                        <th>Status</th>
+                        <th>Confirmations</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,15 +22,15 @@ const Table = ({ job }) => {
                     <tr>
 
                         <td>
-                            <div className="flex items-center space-x-3">
 
-                                <div>
-                                    <div className="font-bold">{email}</div>
-                                    <div className="text-sm opacity-50">United States</div>
-                                </div>
-                            </div>
+                            <p className="text-sm opacity-50">{job_title}</p>
+
                         </td>
-
+                        <td> <p className="font-bold">{email}</p></td>
+                        <td>{deadline}</td>
+                        {/* <td>{price}</td>
+                        <td>{status}</td> */}
+                        {/* <td><button className="">confirm</button></td> */}
                     </tr>
                     {/* row 2 */}
 

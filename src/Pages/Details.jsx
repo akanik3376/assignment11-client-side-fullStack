@@ -19,7 +19,7 @@ const Details = () => {
 
     return (
         <div className="container mx-auto mt-12">
-            <div className="border-2 flex-col space-y-3 p-3">
+            <div className="border-2 flex-col space-y-3 p-3 hover:bg-teal-100">
                 <h2 className="text-2xl font-semibold">{job_title}</h2>
                 <h6 className="text-xl font-bold">Job description: <p className="text-sm">{description}</p></h6>
 
@@ -30,7 +30,7 @@ const Details = () => {
 
 
                 <button
-                    className="btn btn-sm btn-success text-white font-bold">Bid now</button>
+                    className="border-2 border-teal-500 rounded py-2 px-4 bg-teal-300 text-white font-bold">Bid now</button>
 
 
             </div>

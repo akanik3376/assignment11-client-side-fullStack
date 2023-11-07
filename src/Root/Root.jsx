@@ -8,6 +8,8 @@ import LoginPage from '../Pages/LoginPage';
 import AddJob from '../Pages/AddJob';
 import Details from '../Pages/Details';
 import MyBids from '../Pages/MyBids';
+import MyPostedJob from '../Pages/MyPostedJob';
+import PrivetRoot from './PrivetRoot';
 
 const router = createBrowserRouter([
     {
@@ -22,18 +24,23 @@ const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <Details></Details>,
+                element: <PrivetRoot><Details></Details></PrivetRoot>,
                 loader: () => fetch('http://localhost:5000/api/v1/jobs')
-                // loader: ({ params }) => fetch(`http://localhost:5000/api/v1/jobs/${params.id}`)
+
             },
             {
                 path: '/addJob',
-                element: <AddJob></AddJob>
+                element: <PrivetRoot><AddJob></AddJob></PrivetRoot>
             },
             {
                 path: '/myBids',
-                element: <MyBids></MyBids>,
-                // loader: () => fetch('http://localhost:5000/api/v1/jobs/apply/user/request')
+                element: <PrivetRoot><MyBids></MyBids></PrivetRoot>,
+
+            },
+            {
+                path: '/myPostedJob',
+                element: <PrivetRoot><MyPostedJob></MyPostedJob></PrivetRoot>,
+                loader: () => fetch('http://localhost:5000/api/v1/jobs')
             },
             {
                 path: '/login',

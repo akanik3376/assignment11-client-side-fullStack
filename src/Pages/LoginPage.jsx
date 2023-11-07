@@ -29,7 +29,7 @@ const LoginPage = () => {
 
 
         } catch (err) {
-            swal("error")
+            swal("error ! please try again")
         }
     }
 
