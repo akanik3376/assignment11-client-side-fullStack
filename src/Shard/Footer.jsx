@@ -5,8 +5,8 @@ import logo from '../assets/Icons/logo.png'
 
 const Footer = () => {
     return (
-        <div className=' py-10'>
-            <footer className="footer container mx-auto px-8 md:px-0">
+        <div className=' bg-[#c3bbc6] py-10'>
+            <footer className="footer container mx-auto px-8 md:px-0 ">
                 <aside>
                     <img src={logo} alt="" />
                     <p>JOBTEX . <br />Providing reliable tech since 2017</p>

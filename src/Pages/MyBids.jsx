@@ -17,11 +17,27 @@ const MyBids = () => {
     }, [url])
 
     return (
-        <div className="my-12">
-            {
-                applyJobs?.map(job => <Table key={job._id} job={job}></Table>)
-            }
-        </div>
+
+
+
+        <table className="table container mx-auto my-12">
+            {/* head */}
+            <thead className='text-xl font-semibold text-primary'>
+                <tr>
+                    <th>Image</th>
+                    <th>Donator Name</th>
+                    <th>Expired Date</th>
+                    <th>request_date</th>
+
+                </tr>
+            </thead>
+            <tbody >
+                {
+                    applyJobs?.map(job => <Table key={job._id} job={job}></Table>)
+                }
+            </tbody>
+
+        </table>
     );
 };
 

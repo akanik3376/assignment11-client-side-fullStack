@@ -42,6 +42,7 @@ const router = createBrowserRouter([
                 element: <PrivetRoot><MyPostedJob></MyPostedJob></PrivetRoot>,
                 loader: () => fetch('http://localhost:5000/api/v1/jobs')
             },
+
             {
                 path: '/login',
                 element: <LoginPage></LoginPage>

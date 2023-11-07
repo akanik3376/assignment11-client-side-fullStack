@@ -4,40 +4,27 @@ const Table = ({ job }) => {
     const { email, job_title, deadline } = job || {}
     // console.log(job)
     return (
-        <div className="container mx-auto my-12 overflow-x-auto bg-teal-100">
-            <table className="table">
-                {/* head */}
-                <thead>
-                    <tr>
+        <tr >
+            {/* <th>
+                <button onClick={() => handelCancel(_id)} className="btn btn-sm btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </th> */}
 
-                        <th>Job title</th>
-                        <th>gmail</th>
-                        <th>date line</th>
-                        <th>Status</th>
-                        <th>Confirmations</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* row 1 */}
-                    <tr>
+            <td>
+                {email}
+            </td>
+            <td>{job_title}</td>
+            <td>{deadline}</td>
+            {/* <td>${donation_money}</td>
+            <td>{pickup_location}</td> */}
 
-                        <td>
-
-                            <p className="text-sm opacity-50">{job_title}</p>
-
-                        </td>
-                        <td> <p className="font-bold">{email}</p></td>
-                        <td>{deadline}</td>
-                        {/* <td>{price}</td>
-                        <td>{status}</td> */}
-                        {/* <td><button className="">confirm</button></td> */}
-                    </tr>
-                    {/* row 2 */}
-
-                </tbody>
-
-            </table>
-        </div>
+            {/* <th>
+                {
+                    status === 'approve' ? <span className="font-bold text-primary">approved</span> :
+                        <button onClick={() => handelStatusChange(_id)} className="btn btn-ghost text-red-500 btn-xs">Pending</button>}
+            </th> */}
+        </tr>
     );
 };
 
