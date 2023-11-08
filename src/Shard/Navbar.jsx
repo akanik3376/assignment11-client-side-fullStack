@@ -60,9 +60,9 @@ const Navbar = () => {
         <li><NavLink to="/addJob">Add job</NavLink></li>
         <li><NavLink to="/myPostedJob">My posted jobs</NavLink></li>
         <li><NavLink to="/myBids">My Bids</NavLink></li>
-        <li><NavLink to="/contact">Bid Requests</NavLink></li>
-        {/* <li><NavLink to="/login">Login</NavLink></li>
-        <li><NavLink to="/register">Register</NavLink></li> */}
+        <li><NavLink to="/bidRequest">Bid Requests</NavLink></li>
+        <li><NavLink to="/ErrorPage">ErrorPage</NavLink></li>
+
     </>
 
     const handelLogOut = () => {

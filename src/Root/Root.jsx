@@ -10,6 +10,8 @@ import Details from '../Pages/Details';
 import MyBids from '../Pages/MyBids';
 import MyPostedJob from '../Pages/MyPostedJob';
 import PrivetRoot from './PrivetRoot';
+import UpdateData from '../Pages/UpdateData';
+import BidRequests from '../Pages/BidRequests';
 
 const router = createBrowserRouter([
     {
@@ -35,12 +37,22 @@ const router = createBrowserRouter([
             {
                 path: '/myBids',
                 element: <PrivetRoot><MyBids></MyBids></PrivetRoot>,
-
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/jobs/apply/user/request?email${params.email}`)
             },
             {
                 path: '/myPostedJob',
                 element: <PrivetRoot><MyPostedJob></MyPostedJob></PrivetRoot>,
                 loader: () => fetch('http://localhost:5000/api/v1/jobs')
+            },
+            {
+                path: '/update/:id',
+                element: <UpdateData></UpdateData>,
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/jobs/${params.id}`)
+            },
+            {
+                path: '/bidRequest',
+                element: <BidRequests></BidRequests>,
+
             },
 
             {

@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import Table from "../Components/Table";
+import { useLoaderData } from "react-router-dom";
 
 const MyBids = () => {
-    const [applyJobs, setApplyJobs] = useState()
+    const [apply, setApply] = useState()
     const { user } = useAuth()
+    const email = user.email
+    const applyJobs = useLoaderData()
+    console.log(applyJobs)
 
-    const url = `http://localhost:5000/api/v1/jobs/apply/user/request?email${user?.email}`
+
 
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setApplyJobs(data)
-            })
-    }, [url])
+        const applyJob = applyJobs?.filter(job => job.email === email)
+        setApply(applyJob)
+    }, [email, applyJobs])
 
     return (
 
@@ -33,7 +34,7 @@ const MyBids = () => {
             </thead>
             <tbody >
                 {
-                    applyJobs?.map(job => <Table key={job._id} job={job}></Table>)
+                    apply?.map(job => <Table key={job._id} job={job}></Table>)
                 }
             </tbody>
 

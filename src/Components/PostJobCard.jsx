@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import axios from "axios";
+
 import { BsCurrencyDollar, BsStopwatchFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const PostJobCard = ({ job }) => {
-    // console.log(job)
 
-    const { job_title, max_price, min_price, deadline, description, _id } = job || {}
+    const { job_title, maxPrice, minPrice
+        , deadline, description, _id, } = job || {}
 
 
 
@@ -41,13 +41,6 @@ const PostJobCard = ({ job }) => {
             });
     }
 
-    // const HandelUpdate = (id) => {
-    //     axios.put(`http://localhost:5000/api/v1/jobs/${id}`)
-    //         .then(res => {
-    //             console.log(res.data)
-    //         })
-    //         .then(error => console.log(error))
-    // }
 
 
     return (
@@ -56,17 +49,21 @@ const PostJobCard = ({ job }) => {
                 <h2 className="text-2xl font-semibold">{job_title}</h2>
                 <h6 className="text-xl font-bold">Job description: <p className="text-sm">{description}</p></h6>
 
-                <p className="flex items-center font-semibold">Maximum price:<BsCurrencyDollar></BsCurrencyDollar>{max_price}</p>
-                <p className="flex items-center font-semibold">Minimum price:<BsCurrencyDollar></BsCurrencyDollar>{min_price}</p>
+                <p className="flex items-center font-semibold">Maximum price:<BsCurrencyDollar></BsCurrencyDollar>{maxPrice}</p>
+                <p className="flex items-center font-semibold">Minimum price:<BsCurrencyDollar></BsCurrencyDollar>{minPrice
+                }</p>
 
                 <p className="flex items-center font-semibold gap-2">Deadline:<BsStopwatchFill className="text-blue-800"></BsStopwatchFill> {deadline}</p>
 
             </div>
             <div className="flex justify-between ">
-                <button onClick={() => HandelDelete(_id)} className="py-3 px-5 border-2 border-teal-500 rounded-lg mr-3  text-white font-bold hover:bg-teal-300">Delete</button>
-                {/* <Link >
-                    <button onClick={() => HandelUpdate(_id)} className="py-3 px-5 border-2 border-teal-500 rounded-lg mr-3 text-white font-bold bg-teal-300">Update</button>
-                </Link> */}
+                <button onClick={() => HandelDelete(_id)} className="py-2 px-5 border-2 border-teal-500 rounded-lg  font-bold text-teal-500 ">Delete</button>
+
+                <Link to={`/update/${_id}`}
+
+                    className="py-2 px-5 border-2 border-teal-500 rounded-lg   font-bold text-green-600">Update</Link>
+
+
             </div>
         </div>
     );

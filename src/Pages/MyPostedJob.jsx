@@ -17,7 +17,7 @@ const MyPostedJob = () => {
 
     useEffect(() => {
         const postJob = data.filter(data => data.email === user?.email)
-
+        console.log(postJob)
         setPostJob(postJob)
     }, [data, user])
 

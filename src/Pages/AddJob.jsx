@@ -34,7 +34,7 @@ const AddJob = () => {
         // send data to server
         axios.post('http://localhost:5000/api/v1/jobs', jobInfo)
             .then(response => {
-                console.log('Job posted successfully:', response.data);
+                // console.log('Job posted successfully:', response.data);
                 if (response?.data?.insertedId) {
                     swal("Success", "Job added successfully");
                 }
@@ -110,8 +110,7 @@ const AddJob = () => {
                                     </span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="number" name="maxPrice" required placeholder="$ Maximum price
-"
+                                    <input type="number" name="maxPrice" required placeholder="$ Maximum price"
                                         className="input input-bordered w-full" />
                                 </label>
                             </div>
@@ -151,7 +150,7 @@ const AddJob = () => {
                                     className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <input type="submit" value="Add job" className="btn mt-4 btn-block bg-violet-800 text-white font-bold" />
+                        <input type="submit" value="Post  job" className="btn mt-4 btn-block bg-violet-800 text-white font-bold" />
                     </form>
                 </div>
             </div>

@@ -53,8 +53,8 @@ const BidSection = ({ job }) => {
 
 
 
-            <div className="mt-8">
-                <form onSubmit={handelAddJob} className="mt-7 bg-teal-100">
+            <div className="mt-8  bg-teal-100">
+                <form onSubmit={handelAddJob} className="p-7">
                     {/* name and Quantity*/}
                     <div className="grid grid-cols-1 w-full  md:grid-cols-2 gap-5">
                         <div className="form-control ">
@@ -101,7 +101,14 @@ const BidSection = ({ job }) => {
                         </div>
                     </div>
 
-                    <input type="submit" value=" Bid on the project " className="btn mt-4 btn-block bg-violet-800 text-white font-bold" />
+
+                    {
+                        user?.email && email ? <input type="submit" value=" Bid on the project " className="btn mt-4 btn-block bg-violet-800 text-white font-bold" />
+
+                            : <input type="submit" value=" Bid on the project " className="btn btn-disabled mt-4 btn-block bg-violet-800 text-white font-bold" />
+
+                    }
+
                 </form>
             </div>
 
