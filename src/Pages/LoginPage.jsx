@@ -83,10 +83,13 @@ const LoginPage = () => {
                         <p className=" border-2 border-blue-500"></p>
                     </div>
 
-                    <div className="flex justify-center items-center gap-2">
-                        <h3 className="font-semibold">Login with </h3>
-                        <button onClick={HandelGoogleLogin} className="text-4xl">
-                            <FcGoogle></FcGoogle></button>
+                    <div className="flex justify-center  gap-2 ">
+                        <div className="border-b-2 pb-2 flex items-center border-blue-500">
+                            <h3 className="font-semibold border text-2xl">Login with </h3>
+                            <button onClick={HandelGoogleLogin} className="text-2xl flex items-center gap-2 ">
+                                <span className="text-2xl font-bold">
+                                    Google </span><FcGoogle></FcGoogle></button>
+                        </div>
                     </div>
                 </form>
             </div>

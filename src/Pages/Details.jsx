@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { BsStopwatchFill, BsCurrencyDollar } from "react-icons/bs";
 import BidSection from "../Components/BidSection";
+import bannerImg from '../assets/img/low-angle-happy-business-man_23-2148514868.jpg'
 
 const Details = () => {
     const [job, setJob] = useState()
@@ -19,7 +20,13 @@ const Details = () => {
 
     return (
         <div className="container mx-auto mt-12">
-            <div className="border-2 flex-col space-y-3 p-3 hover:bg-teal-100">
+            <h1 className="text-center text-4xl mb-6 text-opacity-100  text-cyan-500 font-semibold">
+                I thing this will be your dream job
+            </h1>
+            <div className=" mb-12 ">
+                <img className="object-cover h-96 w-full opacity-75" src={bannerImg} alt="" />
+            </div>
+            <div className="border-2 border-teal-300 hover:border-8 hover:border-green-600 rounded-2xl w-2/3 mx-auto flex-col space-y-3 p-3 hover:bg-teal-100">
                 <h2 className="text-2xl font-semibold">{job_title}</h2>
                 <h6 className="text-xl font-bold">Job description: <p className="text-sm">{description}</p></h6>
 

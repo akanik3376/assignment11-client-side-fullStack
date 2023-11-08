@@ -63,7 +63,7 @@ const PostJobCard = ({ job }) => {
 
             </div>
             <div className="flex justify-between ">
-                <button onClick={() => HandelDelete(_id)} className="py-3 px-5 border-2 border-teal-500 rounded-lg mr-3  text-white font-bold bg-teal-300">Delete</button>
+                <button onClick={() => HandelDelete(_id)} className="py-3 px-5 border-2 border-teal-500 rounded-lg mr-3  text-white font-bold hover:bg-teal-300">Delete</button>
                 {/* <Link >
                     <button onClick={() => HandelUpdate(_id)} className="py-3 px-5 border-2 border-teal-500 rounded-lg mr-3 text-white font-bold bg-teal-300">Update</button>
                 </Link> */}
