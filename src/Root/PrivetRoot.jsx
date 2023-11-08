@@ -15,7 +15,7 @@ const PrivetRoot = ({ children }) => {
     if (user?.email) {
         return children
     }
-    return <Navigate to='/login' replace></Navigate>
+    return <Navigate state={location?.pathname} to='/login' replace></Navigate>
 };
 
 export default PrivetRoot;

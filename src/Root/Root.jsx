@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             {
                 path: '/bidRequest',
                 element: <PrivetRoot><BidRequests></BidRequests></PrivetRoot>,
-                loader: () => fetch()
+                // loader: () => fetch()
             },
 
             {

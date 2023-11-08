@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
 
-const Table = ({ job }) => {
-    const { email, job_title, deadline } = job || {}
-    // console.log(job)
+
+const Table = ({ job, HandelConfirm }) => {
+    const { email, job_title, deadline, _id, status } = job || {}
+    console.log(_id)
+
+
+
+
     return (
         <tr >
             {/* <th>
@@ -16,14 +21,13 @@ const Table = ({ job }) => {
             </td>
             <td>{job_title}</td>
             <td>{deadline}</td>
-            {/* <td>${donation_money}</td>
-            <td>{pickup_location}</td> */}
+            {/* <td>{status}</td> */}
 
-            {/* <th>
+            <th>
                 {
-                    status === 'approve' ? <span className="font-bold text-primary">approved</span> :
-                        <button onClick={() => handelStatusChange(_id)} className="btn btn-ghost text-red-500 btn-xs">Pending</button>}
-            </th> */}
+                    status === 'confirm' ? <span className="font-bold text-green-700">Confirm</span> :
+                        <button onClick={() => HandelConfirm(_id)} className="btn btn-ghost text-red-500 btn-xs">Pending</button>}
+            </th>
         </tr>
     );
 };

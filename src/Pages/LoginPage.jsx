@@ -1,18 +1,22 @@
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import swal from "sweetalert";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc'
 import bgImg from "../assets/img/pair-pencils-wireless-keyboard-smartphone_140725-8962.jpg"
 
 const LoginPage = () => {
-
+    const location = useLocation()
+    const navigate = useNavigate()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const { googleLogin, LoginUser, user } = useAuth()
 
     const HandelGoogleLogin = () => {
         googleLogin()
+
+        navigate(location?.state ? location.state : '/')
+
     }
 
     const HandelLogin = async (e) => {
@@ -25,6 +29,7 @@ const LoginPage = () => {
             await LoginUser(email, password)
             if (user?.accessToken) {
                 swal("user login success fully")
+                navigate(location?.state ? location.state : '/')
             }
 
 
