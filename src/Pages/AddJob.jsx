@@ -18,6 +18,7 @@ const AddJob = () => {
         const maxPrice = e.target.maxPrice.value
 
         const minPrice = e.target.minPrice.value
+        const brand = e.target.brand.value
 
         const email = e.target.email.value
 
@@ -28,7 +29,8 @@ const AddJob = () => {
             description,
             maxPrice,
             minPrice,
-            email
+            email,
+            brand
         }
         console.log(jobInfo)
         // send data to server
@@ -130,7 +132,7 @@ const AddJob = () => {
                                 <label className="label">
                                     <span className="label-text">Brand Name</span>
                                 </label>
-                                <label className=" border rounded-r-lg w-full">
+                                <label required className=" border rounded-r-lg w-full">
                                     <select name="brand" className="select  w-full">
                                         <option value="web-development">web development</option>
                                         <option value="digital-marketing">digital marketing</option>

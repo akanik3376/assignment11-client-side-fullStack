@@ -8,9 +8,10 @@ import swal from "sweetalert";
 const BidSection = ({ job }) => {
     // console.log(job)
     const { user } = useAuth()
-    const { job_title, deadline } = job || {}
+    const { job_title, deadline, email } = job || {}
     const status = false
-    const email = user?.email
+    const userEmail = user?.email
+
 
     const handelAddJob = (e) => {
         e.preventDefault()
@@ -19,7 +20,7 @@ const BidSection = ({ job }) => {
 
         // const biderEmail = e.target.biderEmail.value
         const ownerEmail = e.target.ownerEmail.value
-
+        // console.log(ownerEmail)
         const bidInfo = {
             email, job_title, deadline, status, price,
             bidDeadline, ownerEmail,
@@ -103,9 +104,9 @@ const BidSection = ({ job }) => {
 
 
                     {
-                        user?.email && email ? <input type="submit" value=" Bid on the project " className="btn mt-4 btn-block bg-violet-800 text-white font-bold" />
+                        userEmail === email ? <input type="submit" value=" Bid on the project " className="btn mt-4 btn-disabled btn-block bg-violet-800 text-white font-bold" />
 
-                            : <input type="submit" value=" Bid on the project " className="btn btn-disabled mt-4 btn-block bg-violet-800 text-white font-bold" />
+                            : <input type="submit" value=" Bid on the project " className="btn  mt-4 btn-block bg-violet-800 text-white font-bold" />
 
                     }
 

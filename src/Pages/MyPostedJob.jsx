@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import { Link, useLoaderData } from "react-router-dom";
 import PostJobCard from "../Components/PostJobCard";
 import img from '../assets/img/smiley-woman-desk-pointing-tablet_23-2148434687.jpg'
+import Swal from "sweetalert2";
 
 
 const MyPostedJob = () => {
@@ -21,6 +22,39 @@ const MyPostedJob = () => {
         setPostJob(postJob)
     }, [data, user])
 
+
+    // handel delete data
+    const HandelDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/api/v1/jobs/${id}`, {
+                        method: "DELETE"
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.deletedCount > 0) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your Job has been deleted.',
+                                    'success'
+                                )
+                                const remaining = postJob.filter(job => job._id !== id)
+                                setPostJob(remaining)
+                            }
+                        });
+                }
+            });
+    }
 
 
     return (
@@ -41,7 +75,10 @@ const MyPostedJob = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto my-12">
                 {
-                    postJob?.map(job => <PostJobCard key={job._id} job={job}></PostJobCard>)
+                    postJob?.map(job => <PostJobCard key={job._id} job={job} HandelDelete={HandelDelete}>
+
+
+                    </PostJobCard>)
                 }
             </div>
 

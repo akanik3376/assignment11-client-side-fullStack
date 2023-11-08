@@ -10,7 +10,7 @@ import addJobImg from '../assets/img/programming-languages-code-with-person-lapt
 
 const UpdateData = () => {
     const data = useLoaderData()
-    const { _id, max_price, min_price, job_title, deadline } = data || {}
+    const { _id, maxPrice, minPrice, title, deadline, description } = data || {}
     console.log(data)
     const { user } = useAuth()
     const HandelUpdate = (e) => {
@@ -23,6 +23,7 @@ const UpdateData = () => {
         const minPrice = e.target.minPrice.value
 
         const email = e.target.email.value
+        const brand = e.target.brand.value
 
 
         const jobInfo = {
@@ -32,6 +33,7 @@ const UpdateData = () => {
             maxPrice,
             minPrice,
             email,
+            brand
 
         }
         console.log(jobInfo)
@@ -83,7 +85,7 @@ const UpdateData = () => {
                                     <span className="label-text">Job title</span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="text" name="title" defaultValue={job_title} required placeholder="Job title"
+                                    <input type="text" name="title" defaultValue={title} required placeholder="Job title"
                                         className="input input-bordered w-full" />
                                 </label>
                             </div>
@@ -103,7 +105,7 @@ const UpdateData = () => {
                                     <span className="label-text"> Description</span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="text" name="description" required placeholder="Description "
+                                    <input type="text" name="description" required defaultValue={description} placeholder="Description "
                                         className="input input-bordered w-full" />
                                 </label>
                             </div>
@@ -114,7 +116,7 @@ const UpdateData = () => {
                                     </span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="number" name="maxPrice" required defaultValue={max_price} placeholder="$ Maximum price
+                                    <input type="number" name="maxPrice" required defaultValue={maxPrice} placeholder="$ Maximum price
 "
                                         className="input input-bordered w-full" />
                                 </label>
@@ -125,7 +127,7 @@ const UpdateData = () => {
                                     <span className="label-text">Minimum price</span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="number" name="minPrice" required placeholder="$ Minimum price" defaultValue={min_price}
+                                    <input type="number" name="minPrice" required placeholder="$ Minimum price" defaultValue={minPrice}
                                         className="input input-bordered w-full" />
                                 </label>
                                 {/* <p>{text}</p> */}
@@ -135,7 +137,7 @@ const UpdateData = () => {
                                 <label className="label">
                                     <span className="label-text">Brand Name</span>
                                 </label>
-                                <label className=" border rounded-r-lg w-full">
+                                <label required placeholder="Select one" className=" border rounded-r-lg w-full">
                                     <select name="brand" className="select  w-full">
                                         <option value="web-development">web development</option>
                                         <option value="digital-marketing">digital marketing</option>

@@ -5,12 +5,13 @@ import { Link, } from "react-router-dom";
 
 const Job = ({ job }) => {
 
-    const { job_title, maxPrice, minPrice, deadline, description, _id } = job || {}
+    const { job_title, maxPrice, minPrice, deadline, description, _id, brand } = job || {}
 
     return (
         <div className="border-2 flex-col space-y-3 p-3 hover:bg-teal-100 rounded-lg">
             <div className="flex-col space-y-3 p-3">
-                <h2 className="text-2xl font-semibold">{job_title}</h2>
+                <h2 className="text-2xl font-semibold">Category: {brand}</h2>
+                <h2 className="text-xl font-semibold">Job title:{job_title}</h2>
                 <h6 className="text-xl font-bold">Job description: <p className="text-sm">{description}</p></h6>
 
                 <p className="flex items-center font-semibold">Maximum price:<BsCurrencyDollar></BsCurrencyDollar>{maxPrice}</p>
