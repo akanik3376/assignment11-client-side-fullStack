@@ -4,10 +4,14 @@ import useAuth from "../Hooks/useAuth";
 import swal from "sweetalert";
 import addJobImg from '../assets/img/programming-languages-code-with-person-laptop_102583-4787.avif';
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const AddJob = () => {
     const { user } = useAuth()
 
+    useEffect(() => {
+        document.title = 'job-tex add-job'; // Set the desired page title
+    }, []);
     // const [text, setText] = useState()
 
     const handelAddJob = (e) => {
@@ -15,10 +19,10 @@ const AddJob = () => {
         const title = e.target.title.value
         const deadline = e.target.deadline.value
         const description = e.target.description.value
-        const maxPrice = e.target.maxPrice.value
+        const max_price = e.target.maxPrice.value
 
-        const minPrice = e.target.minPrice.value
-        const brand = e.target.brand.value
+        const min_price = e.target.minPrice.value
+        const category = e.target.catagories.value
 
         const email = e.target.email.value
 
@@ -27,12 +31,12 @@ const AddJob = () => {
             title,
             deadline,
             description,
-            maxPrice,
-            minPrice,
+            max_price,
+            min_price,
             email,
-            brand
+            category
         }
-        console.log(jobInfo)
+        // console.log(jobInfo)
         // send data to server
         axios.post('http://localhost:5000/api/v1/jobs', jobInfo)
             .then(response => {
@@ -69,10 +73,10 @@ const AddJob = () => {
             </div>
 
 
-            <div className="bg-teal-100 p-4 container mx-auto ">
+            <div className="bg-teal-100 p-4 container mx-auto mb-12">
 
 
-                <div className="w-5/6 md:w-2/3 lg:4/3 mx-auto my-12 ">
+                <div className="w-5/6 md:w-2/3 lg:4/3 mx-auto  ">
                     <form onSubmit={handelAddJob} className="mt-7">
                         {/* name and Quantity*/}
                         <div className="grid grid-cols-1 w-full  md:grid-cols-2 gap-5">
@@ -130,13 +134,13 @@ const AddJob = () => {
 
                             <div className="form-control  ">
                                 <label className="label">
-                                    <span className="label-text">Brand Name</span>
+                                    <span className="label-text">catagories Name</span>
                                 </label>
                                 <label required className=" border rounded-r-lg w-full">
-                                    <select name="brand" className="select  w-full">
-                                        <option value="web-development">web development</option>
-                                        <option value="digital-marketing">digital marketing</option>
-                                        <option value="graphics-design">graphics design</option>
+                                    <select name="catagories" className="select  w-full">
+                                        <option value="Web Development">Web Development</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Graphics Design">Graphics Design</option>
 
                                     </select>
                                 </label>

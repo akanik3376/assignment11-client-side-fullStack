@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import swal from "sweetalert";
 import useAuth from "../Hooks/useAuth";
 import addJobImg from '../assets/img/programming-languages-code-with-person-laptop_102583-4787.avif';
+import { useEffect } from "react";
 
 
 
@@ -51,7 +52,9 @@ const UpdateData = () => {
             });
     }
 
-
+    useEffect(() => {
+        document.title = 'job-tex update'; // Set the desired page title
+    }, []);
 
 
     return (

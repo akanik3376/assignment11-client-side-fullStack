@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 
-const Table = ({ job, HandelConfirm }) => {
+const Table = ({ job }) => {
     const { email, job_title, deadline, _id, status } = job || {}
     console.log(_id)
 
@@ -25,8 +25,11 @@ const Table = ({ job, HandelConfirm }) => {
 
             <th>
                 {
-                    status === 'confirm' ? <span className="font-bold text-green-700">Confirm</span> :
-                        <button onClick={() => HandelConfirm(_id)} className="btn btn-ghost text-red-500 btn-xs">Pending</button>}
+
+                    status ? <button className={status ? "btn btn-ghost text-green-500 btn-xs" : "btn btn-ghost  btn-xs text-red-600"}>
+                        {status}</button> :
+                        <button className={"btn btn-ghost text-yellow-600 btn-xs"}>
+                            Pending..</button>}
             </th>
         </tr>
     );

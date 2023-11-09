@@ -18,6 +18,12 @@ const Details = () => {
     // console.log(job)
     const { job_title, max_price, min_price, deadline, description } = job || {}
 
+    useEffect(() => {
+        document.title = 'job-tex job-details'; // Set the desired page title
+    }, []);
+
+
+
     return (
         <div className="container mx-auto mt-12">
             <h1 className="text-center text-4xl mb-6 text-opacity-100  text-cyan-500 font-semibold">

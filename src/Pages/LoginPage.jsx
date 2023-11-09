@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import swal from "sweetalert";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -19,11 +19,16 @@ const LoginPage = () => {
 
     }
 
+    useEffect(() => {
+        document.title = 'job-tex login'; // Set the desired page title
+    }, []);
+
     const HandelLogin = async (e) => {
         e.preventDefault()
         // get form input value with state and onBlur={(e) => setEmail(e.target.value)} fusion
 
         // create user hare and send email,and password as a prop
+
 
         try {
             await LoginUser(email, password)
@@ -31,10 +36,10 @@ const LoginPage = () => {
                 swal("user login success fully")
                 navigate(location?.state ? location.state : '/')
             }
-
+            else { swal("invalid-login-credentials! please try again ") }
 
         } catch (err) {
-            swal("error ! please try again")
+            console.log(err)
         }
     }
 
@@ -92,7 +97,7 @@ const LoginPage = () => {
                         <div className="border-b-2 pb-2 flex items-center border-blue-500">
                             <h3 className="font-semibold border text-2xl">Login with </h3>
                             <button onClick={HandelGoogleLogin} className="text-2xl flex items-center gap-2 ">
-                                <span className="text-2xl font-bold">
+                                <span className="text-2xl font-bold ml-3">
                                     Google </span><FcGoogle></FcGoogle></button>
                         </div>
                     </div>

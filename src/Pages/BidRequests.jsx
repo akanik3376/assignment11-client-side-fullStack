@@ -1,50 +1,85 @@
 import { useEffect, useState } from "react";
+import useAuth from "../Hooks/useAuth";
+import BidReq from "../Components/BidReq";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import addJobImg from "../assets/img/rear-view-adult-man-searching-new-job-working-writing-his-resume-laptop_662251-2153.jpg"
 
 const BidRequests = () => {
     const [bidRequests, setBidRequests] = useState([]);
+    const { user } = useAuth()
+
     useEffect(() => {
         // Fetch bid requests data from the backend API
-        fetch('api/bid-requests')
+        fetch(`http://localhost:5000/api/v1/job/ownerReq?ownerEmail=${user.email}`)
             .then((response) => response.json())
             .then((data) => setBidRequests(data));
+    }, [user]);
+    // console.log(bidRequests)
+
+    const HandelAccept = (id) => {
+        const data = { status: 'confirm' }
+        axios.put(`http://localhost:5000/api/v1/jobs/apply/${id}`, data)
+            .then(res => console.log(res.data))
+
+    }
+    // http://localhost:5000/api/v1/job/ownerReq?ownerEmail=mama@mami.com
+    const HandelReject = (id) => {
+        const data = { status: 'Reject' }
+        axios.put(`http://localhost:5000/api/v1/jobs/apply/${id}`, data)
+            .then(res => console.log(res.data))
+    }
+
+    useEffect(() => {
+        document.title = 'job-tex bidRequests'; // Set the desired page title
     }, []);
 
-    const handleAcceptBid = (bidId) => {
-        // Send a request to accept the bid with the given bidId
-        // Update the bid status in the UI
-    };
-
-    const handleRejectBid = (bidId) => {
-        // Send a request to reject the bid with the given bidId
-        // Update the bid status in the UI
-    };
 
     return (
+
+
         <div>
-            <h1>Bid Requests</h1>
-            <table>
-                <thead>
+
+            <div className="hero h-[70vh] mt-5 mb-12" style={{ backgroundImage: `url(${addJobImg})` }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-center text-neutral-content">
+                    <div className="max-w-md opacity-60">
+                        <h1 className="text-3xl  font-bold mb-5">Post Your Job Hare</h1>
+                        <div className=" text-xl font-bold flex justify-center items-center">
+                            <button>
+                                <Link to='/'>Home</Link></button>/
+                            <button>
+                                <Link to='/register'>Register</Link>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table className="table container mx-auto my-12">
+                {/* head */}
+                <thead className='text-xl font-semibold text-primary'>
                     <tr>
-                        <th>Bidder Name</th>
-                        <th>Bid Amount</th>
-                        <th>Bid Status</th>
-                        <th>Actions</th>
+
+                        <th>Email</th>
+                        <th>Job title</th>
+                        <th>Deadline</th>
+                        {/* <th>Status</th> */}
+                        <th>Accept</th>
+                        <th>Reject</th>
+
                     </tr>
                 </thead>
-                <tbody>
-                    {bidRequests.map((bid) => (
-                        <tr key={bid.id}>
-                            <td>{bid.bidderName}</td>
-                            <td>{bid.bidAmount}</td>
-                            <td>{bid.bidStatus}</td>
-                            <td>
-                                <button onClick={() => handleAcceptBid(bid.id)}>Accept</button>
-                                <button onClick={() => handleRejectBid(bid.id)}>Reject</button>
-                            </td>
-                        </tr>
-                    ))}
+                <tbody >
+                    {
+                        bidRequests?.map(job => <BidReq key={job._id} job={job}
+                            HandelAccept={HandelAccept} HandelReject={HandelReject}
+
+                        ></BidReq>)
+                    }
                 </tbody>
+
             </table>
+
         </div>
     );
 };

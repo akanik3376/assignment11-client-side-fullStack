@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import icon from '../assets/Icons/th.jpg'
+import { useEffect } from "react";
 const Error = () => {
+
+    useEffect(() => {
+        document.title = 'job-tex error'; // Set the desired page title
+    }, []);
+
     return (
         <div className='container   mx-auto flex justify-center items-center'>
             <div className='mt-20'>

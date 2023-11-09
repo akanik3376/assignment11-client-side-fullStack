@@ -57,6 +57,11 @@ const MyPostedJob = () => {
     }
 
 
+    useEffect(() => {
+        document.title = 'job-tex myPostedJob'; // Set the desired page title
+    }, []);
+
+
     return (
         <div className="mt-5 mb-12">
             <div className="hero h-[50vh]" style={{ backgroundImage: `url(${img})` }}>
